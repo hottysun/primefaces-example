@@ -12,3 +12,14 @@ spring:
     view:
       prefix: /WEB-INF/views
       suffix: .xhtml
+
+joinfaces:
+  faces:
+    project-stage: Development
+    facelets-refresh-period: 1
+    config-files:
+      - /WEB-INF/faces-config.xml
+
+facelets:
+  external:
+    path: C:\Users\sunny\IdeaProjects\primefaces-example1\pages\
