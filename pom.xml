@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <description>SHREE GANESH PRASANNA</description>
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>org.example</groupId>
+  <artifactId>primefaces-example</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <name>primefaces-example</name>
+  <packaging>jar</packaging>
+
+  <!-- ========================================================== -->
+  <!--   PARENT                                                   -->
+  <!-- ========================================================== -->
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>3.5.7</version>
+    <relativePath/>
+  </parent>
+
+  <!-- ========================================================== -->
+  <!--   PROPERTIES                                               -->
+  <!-- ========================================================== -->
+  <properties>
+    <java.version>21</java.version>
+    <maven.compiler.source>21</maven.compiler.source>
+    <maven.compiler.target>21</maven.compiler.target>
+    <joinfaces.version>5.5.6</joinfaces.version>
+    <primefaces.version>13.0.0</primefaces.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <!-- ========================================================== -->
+  <!--   DEPENDENCY MANAGEMENT (JoinFaces BOM)                    -->
+  <!-- ========================================================== -->
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.joinfaces</groupId>
+        <artifactId>joinfaces-dependencies</artifactId>
+        <version>${joinfaces.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <!-- ========================================================== -->
+  <!--   DEPENDENCIES                                            -->
+  <!-- ========================================================== -->
+  <dependencies>
+
+    <!-- ✅ JoinFaces Starter (auto-configures JSF and FacesServlet) -->
+    <dependency>
+      <groupId>org.joinfaces</groupId>
+      <artifactId>jsf-spring-boot-starter</artifactId>
+      <version>${joinfaces.version}</version>
+    </dependency>
+
+    <!-- ✅ PrimeFaces integration -->
+    <dependency>
+      <groupId>org.joinfaces</groupId>
+      <artifactId>primefaces-spring-boot-starter</artifactId>
+      <version>${joinfaces.version}</version>
+    </dependency>
+
+    <!-- ✅ Optional JSTL support -->
+    <dependency>
+      <groupId>jakarta.servlet.jsp.jstl</groupId>
+      <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+      <version>3.0.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.glassfish.web</groupId>
+      <artifactId>jakarta.servlet.jsp.jstl</artifactId>
+      <version>3.0.1</version>
+    </dependency>
+
+    <!-- ✅ Spring Boot Web (needed for REST/static) -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+
+    <!-- ✅ Actuator (optional) -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-actuator</artifactId>
+    </dependency>
+
+    <!-- ✅ Lombok -->
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <optional>true</optional>
+    </dependency>
+
+    <!-- ✅ DevTools -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-devtools</artifactId>
+      <scope>runtime</scope>
+      <optional>true</optional>
+    </dependency>
+
+  </dependencies>
+
+  <!-- ========================================================== -->
+  <!--   BUILD CONFIGURATION                                      -->
+  <!-- ========================================================== -->
+  <build>
+    <finalName>jsf-demo</finalName>
+    <plugins>
+
+      <!-- Compiler Plugin -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.13.0</version>
+        <configuration>
+          <source>${java.version}</source>
+          <target>${java.version}</target>
+          <annotationProcessorPaths>
+            <path>
+              <groupId>org.projectlombok</groupId>
+              <artifactId>lombok</artifactId>
+            </path>
+          </annotationProcessorPaths>
+        </configuration>
+      </plugin>
+
+      <!-- Spring Boot Plugin -->
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+        <configuration>
+          <excludes>
+            <exclude>
+              <groupId>org.projectlombok</groupId>
+              <artifactId>lombok</artifactId>
+            </exclude>
+          </excludes>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>

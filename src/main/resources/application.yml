@@ -1,0 +1,14 @@
+server:
+  shutdown: GRACEFUL
+  port: 8081
+
+spring:
+  application:
+    name: primefaces-example
+  devtools:
+    restart:
+      enabled: true
+  mvc:
+    view:
+      prefix: /WEB-INF/views
+      suffix: .xhtml
