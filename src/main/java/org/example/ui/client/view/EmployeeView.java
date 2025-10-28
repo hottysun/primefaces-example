@@ -4,6 +4,7 @@ import java.io.Serial;
 import java.io.Serializable;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.example.ui.client.bean.Employee;
 import org.example.ui.client.components.SelectOneMenu;
 import org.example.ui.service.EmployeeService;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Component;
 @Scope("view")
 @Data
 @NoArgsConstructor
+@Slf4j
 public class EmployeeView implements Serializable {
 
   @Serial private static final long serialVersionUID = -4_650_119_999_277_610_464L;
@@ -32,6 +34,10 @@ public class EmployeeView implements Serializable {
   public void buildEmployeeMenu() {
     this.employeeMenu = SelectOneMenu.by(employeeService.findAll(numberOfEmployees),
                                          e -> e.getId().toString(), Employee::getName);
+  }
+
+  public void onEmployeeChange() {
+    log.info("h");
   }
 
 }

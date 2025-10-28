@@ -2,8 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui"
->
+      xmlns:p="http://primefaces.org/ui">
 
 <h:head>
     <title>Dynamic SelectOneMenu Example</title>
@@ -15,13 +14,18 @@
         <p:inputText value="#{employeeView.numberOfEmployees}"/>
         <p:commandButton value="Refresh" update="form"
                          actionListener="#{employeeView.buildEmployeeMenu()}"/>
-        <p:outputLabel for="@next" value="Basic"/>
-        <p:selectOneMenu value="#{employeeView.employeeMenu.selected}" label="Employee"
-                         title="Employees" onchange="submit()"
+        <p:selectOneMenu value="#{employeeView.employeeMenu.selected}"
+                         onchange="submit()"
                          valueChangeListener="#{employeeView.employeeMenu.onChange}">
             <f:selectItems value="#{employeeView.employeeMenu.options}"/>
         </p:selectOneMenu>
         <p:outputLabel value="#{employeeView.employeeMenu.selectedItem}"/>
+
+        <p:selectOneMenu value="#{employeeView.employeeMenu.selected}">
+            <f:selectItems value="#{employeeView.employeeMenu.options}"/>
+            <p:ajax event="change" process="@this" update="@form"
+                    listener="#{employeeView.onEmployeeChange}"/>
+        </p:selectOneMenu>
     </h:form>
 </h:body>
 </html>

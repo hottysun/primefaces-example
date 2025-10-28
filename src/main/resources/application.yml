@@ -8,14 +8,20 @@ spring:
   devtools:
     restart:
       enabled: true
-  mvc:
-    view:
-      prefix: /WEB-INF/views
-      suffix: .xhtml
 
 joinfaces:
+  faces-servlet:
+    enabled: true
   faces:
     project-stage: Development
     facelets-refresh-period: 1
     config-files:
       - /WEB-INF/faces-config.xml
+  primefaces:
+    theme: aristo
+    font-awesome: true
+
+logging:
+  level:
+    org.joinfaces: DEBUG
+    jakarta.faces: DEBUG
