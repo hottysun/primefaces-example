@@ -59,22 +59,6 @@
       <version>${joinfaces.version}</version>
     </dependency>
 
-    <!-- ✅ PrimeFaces (Jakarta namespace) -->
-    <dependency>
-      <groupId>org.primefaces</groupId>
-      <artifactId>primefaces</artifactId>
-      <version>${primefaces.version}</version>
-      <classifier>jakarta</classifier>
-    </dependency>
-
-    <!-- ✅ PrimeFaces Extensions (Jakarta) -->
-    <dependency>
-      <groupId>org.primefaces.extensions</groupId>
-      <artifactId>primefaces-extensions</artifactId>
-      <version>${primefaces.version}</version>
-      <classifier>jakarta</classifier>
-    </dependency>
-
     <!-- ✅ JoinFaces PrimeFaces starter -->
     <dependency>
       <groupId>org.joinfaces</groupId>
